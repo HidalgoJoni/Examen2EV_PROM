@@ -46,6 +46,7 @@
         android:layout_marginRight="25dp"
         android:layout_marginTop="10sp"
         android:hint="Contraseña"
+        android:inputType="textPassword"
         android:id="@+id/contraseña"
         app:layout_constraintBottom_toTopOf="@+id/btnLogin"
         app:layout_constraintEnd_toEndOf="parent"
