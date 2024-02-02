@@ -69,10 +69,15 @@ public class AdministracionActivity extends AppCompatActivity {
                     if (!dbQuimica.existeElemento(nombre.getText().toString().trim())){
                         // Si no existe un elemento con ese mismo nombre procedemos a insertarlo
                         Elemento nuevoElemento = new Elemento(nombre.getText().toString(), simbolo.getText().toString() ,Integer.parseInt(numAtomico.getText().toString()), estado.getText().toString());
+                        dbQuimica.aniadirElemento(nuevoElemento);
                         Toast.makeText(AdministracionActivity.this, "Elemento insertado", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(AdministracionActivity.this, "El elemento ya existe", Toast.LENGTH_LONG).show();
                     }
+                    nombre.setText("");
+                    simbolo.setText("");
+                    numAtomico.setText("");
+                    estado.setText("");
                 }
             }
         });
@@ -83,10 +88,12 @@ public class AdministracionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (dbQuimica.existeElemento(nombre.getText().toString())){
+                    Elemento elemento = dbQuimica.obtenerElemento(nombre.getText().toString());
+
+                    simbolo.setText(elemento.getSimbolo()+"");
+                    numAtomico.setText(elemento.getNumAtomico()+"");
+                    estado.setText(elemento.getEstado()+"");
                     nombre.setActivated(false);
-                    simbolo.setText("");
-                    numAtomico.setText("");
-                    estado.setText("");
 
                     btnInsertar.setEnabled(false);
                     btnBorrar.setEnabled(false);
@@ -141,7 +148,7 @@ public class AdministracionActivity extends AppCompatActivity {
                     btnBorrar.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Elemento elementoABorrar = new Elemento(nombre.getText().toString(), simbolo.getText().toString() ,Integer.parseInt(numAtomico.getText().toString()), estado.getText().toString());
+                            String elementoABorrar = nombre.getText().toString();
                             dbQuimica.borrarElemento(elementoABorrar);
                             Toast.makeText(AdministracionActivity.this, "Elemento eliminado correctamente", Toast.LENGTH_SHORT).show();
 
