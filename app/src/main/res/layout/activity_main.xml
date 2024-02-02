@@ -47,13 +47,13 @@
         android:layout_marginRight="15dp"
         android:layout_marginTop="10sp"
         android:text="Quimico"
-        app:layout_constraintBottom_toTopOf="@+id/botonSalir"
+        app:layout_constraintBottom_toTopOf="@+id/btnSalir"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnConsultar" />
 
     <Button
-        android:id="@+id/botonSalir"
+        android:id="@+id/btnSalir"
         android:layout_width="175dp"
         android:layout_height="57dp"
         android:text="Salir"
