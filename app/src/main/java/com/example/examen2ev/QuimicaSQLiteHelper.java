@@ -29,7 +29,7 @@ public class QuimicaSQLiteHelper extends SQLiteOpenHelper {
                         "Simbolo TEXT," +
                         "NumAtomico INTEGER," +
                         "Estado TEXT)");
-        db.execSQL("INSERT INTO Elementos VALUES ('HELIO', 'He', '2', 'GAS'), ('HIERRO', 'Fe', '26', 'SOLIDO'), ('MERCURIO', 'Hg', '80', 'LIQUIDO')");
+        db.execSQL("INSERT INTO Elementos VALUES (1, 'HELIO', 'He', 2, 'GAS'), (2, 'HIERRO', 'Fe', 26, 'SOLIDO'), (3, 'MERCURIO', 'Hg', 80, 'LIQUIDO')");
     }
 
     @Override
@@ -62,8 +62,7 @@ public class QuimicaSQLiteHelper extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
 
-        Elemento elemento = new Elemento(cursor.getString(0),
-                cursor.getString(1), Integer.parseInt(cursor.getString(2)), cursor.getString(3));
+        Elemento elemento = new Elemento(nombre, cursor.getString(0), Integer.parseInt(cursor.getString(1)), cursor.getString(2));
         cursor.close();
         return elemento;
     }
@@ -91,9 +90,9 @@ public class QuimicaSQLiteHelper extends SQLiteOpenHelper {
     }
 
     // Metodo para borrar un elemento
-    public void borrarElemento(Elemento elemento){
+    public void borrarElemento(String nombre){
         SQLiteDatabase db = this.getReadableDatabase();
-        db.delete("Elementos", "ID = ?", new String[]{String.valueOf(elemento.getIdentificacion())});
+        db.delete("Elementos", "Nombre = ?", new String[]{nombre});
         db.close();
     }
 }
