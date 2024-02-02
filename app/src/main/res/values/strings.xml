@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">Examen2EV</string>
+    <string name="app_name">QUIMICANDO</string>
+    <string name="quimico">Quimico</string>
+    <string name="consultar">Consultar elementos</string>
+    <string name="salir">Salir</string>
+    <string name="login">INICIO DE SESION</string>
+    <string name="loginBtn">LOGIN</string>
+    <string name="cancelar">CANCELAR</string>
+    <string name="insert">INSERTA UN NUEVO ELEMENTO</string>
+    <string name="insertar">INSERTAR</string>
+    <string name="modificar">MODIFICAR</string>
+    <string name="borrar">BORRAR</string>
+    <string name="volver">VOLVER</string>
 </resources>
