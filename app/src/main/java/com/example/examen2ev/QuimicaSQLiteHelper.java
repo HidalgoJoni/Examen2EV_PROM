@@ -21,6 +21,7 @@ public class QuimicaSQLiteHelper extends SQLiteOpenHelper {
                         "Simbolo TEXT," +
                         "NumAtomico INTEGER," +
                         "Estado TEXT)");
+        db.execSQL("INSERT INTO Elementos VALUES ('HELIO', 'He', '2', 'GAS'), ('HIERRO', 'Fe', '26', 'SOLIDO'), ('MERCURIO', 'Hg', '80', 'LIQUIDO')");
     }
 
     @Override
@@ -33,5 +34,6 @@ public class QuimicaSQLiteHelper extends SQLiteOpenHelper {
                         "Simbolo TEXT," +
                         "NumAtomico INTEGER," +
                         "Estado TEXT)");
+        db.execSQL("INSERT INTO Elementos VALUES ('HELIO', 'He', '2', 'GAS'), ('HIERRO', 'Fe', '26', 'SOLIDO'), ('MERCURIO', 'Hg', '80', 'LIQUIDO')");
     }
 }
