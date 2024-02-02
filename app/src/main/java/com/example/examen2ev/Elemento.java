@@ -15,6 +15,10 @@ public class Elemento {
         this.estado=estado;
     }
 
+    public Elemento() {
+
+    }
+
     public int getIdentificacion() {
         return identificacion;
     }
