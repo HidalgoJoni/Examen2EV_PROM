@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class AdministracionActivity extends AppCompatActivity {
     private Button btnInsertar, btnModificar, btnBorrar, btnVolver;
@@ -43,9 +44,14 @@ public class AdministracionActivity extends AppCompatActivity {
         btnInsertar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (validarDatos()){
-                    
-
+                if (validarDatos()){ // Validamos los datos
+                    if (!dbQuimica.existeElemento(nombre.getText().toString().trim())){
+                        // Si no existe un elemento con ese mismo nombre procedemos a insertarlo
+                        Elemento nuevoElemento = new Elemento(nombre.getText().toString(), simbolo.getText().toString() ,Integer.parseInt(numAtomico.getText().toString()), estado.getText().toString());
+                        Toast.makeText(AdministracionActivity.this, "Elemento insertado", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(AdministracionActivity.this, "El elemento ya existe", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
