@@ -51,9 +51,9 @@ public class ConsultaActivity extends AppCompatActivity {
                 if (dbQuimica.existeElemento(nombre.getText().toString())) {
                     Elemento elemento = dbQuimica.obtenerElemento(nombre.getText().toString());
 
-                    simbolo.setText(elemento.getSimbolo());
-                    numAtomico.setText(elemento.getNumAtomico());
-                    estado.setText(elemento.getEstado());
+                    simbolo.setText(elemento.getSimbolo()+"");
+                    numAtomico.setText(elemento.getNumAtomico()+"");
+                    estado.setText(elemento.getEstado()+"");
 
                     simbolo.setVisibility(View.VISIBLE);
                     numAtomico.setVisibility(View.VISIBLE);
