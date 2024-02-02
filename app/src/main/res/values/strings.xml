@@ -11,4 +11,6 @@
     <string name="modificar">MODIFICAR</string>
     <string name="borrar">BORRAR</string>
     <string name="volver">VOLVER</string>
+    <string name="consulta">CONSULTAS</string>
+    <string name="buscar">BUSCAR</string>
 </resources>
