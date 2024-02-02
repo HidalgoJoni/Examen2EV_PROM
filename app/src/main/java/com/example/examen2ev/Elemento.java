@@ -1,5 +1,7 @@
 package com.example.examen2ev;
 
+import android.widget.EditText;
+
 public class Elemento {
     private int identificacion;
     private String nombre;
@@ -7,16 +9,16 @@ public class Elemento {
     private int numAtomico;
     private String estado;
 
-    public Elemento (int id, String nom, String simbolo, int num, String estado){
-        this.identificacion=id;
-        this.nombre=nom;
-        this.simbolo=simbolo;
-        this.numAtomico=num;
-        this.estado=estado;
-    }
-
     public Elemento() {
 
+    }
+
+    // Constructor creado para insertar en la bbdd, ya que la he creado con id autoincrement
+    public Elemento(String nombre, String simbolo, int numAtomico, String estado) {
+        this.nombre=nombre;
+        this.simbolo=simbolo;
+        this.numAtomico=numAtomico;
+        this.estado=estado;
     }
 
     public int getIdentificacion() {
