@@ -52,6 +52,22 @@ public class QuimicaSQLiteHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    // Método para recuperar un elemento
+    public Elemento obtenerElemento(String nombre) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query("Elementos", new String[] {"Simbolo", "NumAtomico", "Estado"}, "nombre = ?",
+                new String[] { nombre }, null, null, null, null);
+
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        Elemento elemento = new Elemento(cursor.getString(0),
+                cursor.getString(1), Integer.parseInt(cursor.getString(2)), cursor.getString(3));
+        cursor.close();
+        return elemento;
+    }
+
     // Metodo para actualizar un elemento
     public int actualizarElemento(Elemento elemento){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -74,35 +90,10 @@ public class QuimicaSQLiteHelper extends SQLiteOpenHelper {
         return existe;
     }
 
+    // Metodo para borrar un elemento
     public void borrarElemento(Elemento elemento){
         SQLiteDatabase db = this.getReadableDatabase();
         db.delete("Elementos", "ID = ?", new String[]{String.valueOf(elemento.getIdentificacion())});
         db.close();
-    }
-
-    public List<Elemento> obtenerElementos(String nombre){
-        List<Elemento> listaElementos = new ArrayList<Elemento>();
-
-        String selectQuery = "SELECT * FROM Elementos WHERE Nombre = ?";
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, new String[]{nombre});
-
-        if (cursor.moveToFirst()) {
-            do {
-                Elemento elemento = new Elemento();
-                elemento.setIdentificacion(Integer.parseInt(cursor.getString(0)));
-                elemento.setNombre(cursor.getString(1));
-                elemento.setSimbolo(cursor.getString(2));
-                elemento.setNumAtomico(Integer.parseInt(cursor.getString(3)));
-                elemento.setEstado(cursor.getString(4));
-
-                // Añadiendo elemento a la lista
-                listaElementos.add(elemento);
-            } while (cursor.moveToNext());
-        }
-
-        cursor.close();
-        return listaElementos;
     }
 }
