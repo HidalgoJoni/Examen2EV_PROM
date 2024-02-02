@@ -65,6 +65,15 @@ public class QuimicaSQLiteHelper extends SQLiteOpenHelper {
         return db.update("Elementos", values, "ID = ?", new String[]{String.valueOf(elemento.getIdentificacion())});
     }
 
+    // Metodo para saber si existe un elemento en especifico
+    public boolean existeElemento (String nombre){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT 1 FROM Elementos WHERE nombre = ?";
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{nombre});
+        boolean existe = cursor.getCount() > 0;
+        return existe;
+    }
+
     public void borrarElemento(Elemento elemento){
         SQLiteDatabase db = this.getReadableDatabase();
         db.delete("Elementos", "ID = ?", new String[]{String.valueOf(elemento.getIdentificacion())});
