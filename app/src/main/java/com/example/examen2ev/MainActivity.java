@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, ConsultaActivity.class);
                 startActivity(i);
+                i.getExtras();
+                int num = getIntent().getIntExtra("consultas", 0);
             }
         });
 
